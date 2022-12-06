@@ -25,7 +25,7 @@ db = firebase.database()
 storage = firebase.storage()
 Full_count = 0
 Empty_count = 0
-
+Status = 'none'
 def Update_Time(): # 현재시간을 문자열로 저장하여 반환하는 함수
     print("Update time")
     tm = localtime()
@@ -77,14 +77,14 @@ while picam.isOpened:
     if Full_count > 0 and Empty_count > 0:
         Full_count,Empty_count = 0 
         
-    if Full_count == 3:
+    if Full_count == 4:
         status = 'Full'
         Time = Update_Time()
         Upload_data(Time,status)
         Status = Load_data(Time)
         Full_count = 0
 
-    if Empty_count == 3:
+    if Empty_count == 4:
         status = 'Empty'
         Time = Update_Time()
         Upload_data(Time,status)
@@ -97,7 +97,6 @@ while picam.isOpened:
     if Status == 'Empty':
         empty.play()
         Status = 'None'
-    print("성공 Status = {1} Full_count = {2} Empty_count = {3}" .format(Status, Full_count,Empty_count))
 
     if  cv2.waitKey(1) & 0xFF == ord('q'):
         break
