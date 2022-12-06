@@ -1,2 +1,3 @@
 # raspberrypi_pet
-2학년 2학기 팀프로젝트
+# my first code
+Team Asus's project
